@@ -182,12 +182,6 @@ class _Form2State extends State<Form4> {
   }
 
   void _submitForm() {
-    // Handle form submission logic here
-    // Example: Save data to database or API call
     print('Form tamamlandı');
-    // Reset controllers after submission if needed
-    // resmiController.clear();
-    // kiralikController.clear();
-    // ...
   }
 }
