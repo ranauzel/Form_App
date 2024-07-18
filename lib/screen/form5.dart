@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../feature.dart';
 
 class Form5 extends StatefulWidget {
   @override
@@ -7,7 +8,6 @@ class Form5 extends StatefulWidget {
 
 class _Form5State extends State<Form5> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   final TextEditingController tuhisController = TextEditingController();
   final TextEditingController tideController = TextEditingController();
   final TextEditingController sanayiController = TextEditingController();
@@ -90,111 +90,112 @@ class _Form5State extends State<Form5> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Üyelik Aidatları Formu'),
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFF2585A3), Color(0xFF172854)],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+    return KeyboardDismissContainer(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Üyelik Aidatları Formu'),
         ),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return SingleChildScrollView(
-              padding: EdgeInsets.all(16.0),
-              child: Card(
-                elevation: 4.0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                color: Colors.white
-                    .withOpacity(0.1), // Adjust opacity or color as desired
-                child: Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        sectionHeader(
-                            'Üye Olunan Ulusal ve Uluslararası Kurum ve Kuruluşlara Üyelik Aidatları'),
-                        buildNumericField(
-                            'Türk Ağır Sanayii Ve Hizmet Sektörü Kamu İşverenleri Sendikası Aidatı (TÜHİS)',
-                            tuhisController,
-                            placeholder: "62.000 (2022)"),
-                        buildNumericField(
-                            'Türkiye İç Denetim Enstitüsü Derneği (TİDE)',
-                            tideController,
-                            placeholder: "8.640 (2022)"),
-                        buildNumericField('Sanayi Odası', sanayiController,
-                            placeholder: "6.906 (2022)"),
-                        buildNumericField('Ticaret Odası', ticaretController,
-                            placeholder: "21.051 (2022)"),
-                        buildNumericField('Uluslararası Gaz Birliği',
-                            uluslararasiGazController),
-                        buildNumericField(
-                            'Taşınabilir Pil Üret. Ve İth. Derneği',
-                            tasinabilirPilController),
-                        buildNumericField('Kurumsal Risk Yönetimi Derneği',
-                            riskYonetimiController,
-                            placeholder: "6.000 (2022)"),
-                        buildNumericField(
-                            'Kalite Derneği (KALDER)', kalderController,
-                            placeholder: "3.600 (2022)"),
-                        buildNumericField(
-                            'Dünya Enerji Konseyi', enerjiKonseyiController,
-                            placeholder: "12.850 (2022)"),
-                        buildNumericField('Türk Kamu İşletmeleri Birliği',
-                            kamuIsletmeleriController,
-                            placeholder: "20.000 (2022)"),
-                        buildNumericField('İhracatçılar Birliği',
-                            ihracatcilarBirligiController),
-                        buildNumericField('Diğer 1', diger1Controller),
-                        buildNumericField('Diğer 2', diger2Controller),
-                        buildNumericField('Diğer 3', diger3Controller),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 10.0),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'Toplam Aidat',
-                              border: OutlineInputBorder(),
-                            ),
-                            readOnly: true,
-                            controller: TextEditingController(
-                              text: totalAidat.toString(),
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF2585A3), Color(0xFF172854)],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                padding: EdgeInsets.all(16.0),
+                child: Card(
+                  color: Colors.transparent,
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ), // Adjust opacity or color as desired
+                  child: Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          sectionHeader(
+                              'Üye Olunan Ulusal ve Uluslararası Kurum ve Kuruluşlara Üyelik Aidatları'),
+                          buildNumericField(
+                              'Türk Ağır Sanayii Ve Hizmet Sektörü Kamu İşverenleri Sendikası Aidatı (TÜHİS)',
+                              tuhisController,
+                              placeholder: "62.000 (2022)"),
+                          buildNumericField(
+                              'Türkiye İç Denetim Enstitüsü Derneği (TİDE)',
+                              tideController,
+                              placeholder: "8.640 (2022)"),
+                          buildNumericField('Sanayi Odası', sanayiController,
+                              placeholder: "6.906 (2022)"),
+                          buildNumericField('Ticaret Odası', ticaretController,
+                              placeholder: "21.051 (2022)"),
+                          buildNumericField('Uluslararası Gaz Birliği',
+                              uluslararasiGazController),
+                          buildNumericField(
+                              'Taşınabilir Pil Üret. Ve İth. Derneği',
+                              tasinabilirPilController),
+                          buildNumericField('Kurumsal Risk Yönetimi Derneği',
+                              riskYonetimiController,
+                              placeholder: "6.000 (2022)"),
+                          buildNumericField(
+                              'Kalite Derneği (KALDER)', kalderController,
+                              placeholder: "3.600 (2022)"),
+                          buildNumericField(
+                              'Dünya Enerji Konseyi', enerjiKonseyiController,
+                              placeholder: "12.850 (2022)"),
+                          buildNumericField('Türk Kamu İşletmeleri Birliği',
+                              kamuIsletmeleriController,
+                              placeholder: "20.000 (2022)"),
+                          buildNumericField('İhracatçılar Birliği',
+                              ihracatcilarBirligiController),
+                          buildNumericField('Diğer 1', diger1Controller),
+                          buildNumericField('Diğer 2', diger2Controller),
+                          buildNumericField('Diğer 3', diger3Controller),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                labelText: 'Toplam Aidat',
+                                border: OutlineInputBorder(),
+                              ),
+                              readOnly: true,
+                              controller: TextEditingController(
+                                text: totalAidat.toString(),
+                              ),
                             ),
                           ),
-                        ),
-                        sectionNote(
-                            'Not: Yabancı para cinsinden yapılan ödemeler, ödemenin yapıldığı tarihteki döviz kuru üzerinden TL’ye çevrilip yazılacaktır.'),
-                        buildTextField(
-                            'Diğer Kuruluş 1 Adı', digerKurum1Controller),
-                        buildTextField(
-                            'Diğer Kuruluş 2 Adı', digerKurum2Controller),
-                        buildTextField(
-                            'Diğer Kuruluş 3 Adı', digerKurum3Controller),
-                        SizedBox(height: 20),
-                        Center(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                _submitForm();
-                              }
-                            },
-                            child: Text('Tamamla'),
+                          sectionNote(
+                              'Not: Yabancı para cinsinden yapılan ödemeler, ödemenin yapıldığı tarihteki döviz kuru üzerinden TL’ye çevrilip yazılacaktır.'),
+                          buildTextField(
+                              'Diğer Kuruluş 1 Adı', digerKurum1Controller),
+                          buildTextField(
+                              'Diğer Kuruluş 2 Adı', digerKurum2Controller),
+                          buildTextField(
+                              'Diğer Kuruluş 3 Adı', digerKurum3Controller),
+                          SizedBox(height: 20),
+                          Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  _submitForm();
+                                }
+                              },
+                              child: Text('Tamamla'),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

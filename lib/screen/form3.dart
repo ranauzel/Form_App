@@ -170,22 +170,6 @@ class _Form3State extends State<Form3> {
     );
   }
 
-  Widget buildTextField(String label, TextEditingController controller) {
-    return TextFormField(
-      controller: controller,
-      decoration: InputDecoration(
-        labelText: label,
-        border: OutlineInputBorder(),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Lütfen bu alanı doldurun';
-        }
-        return null;
-      },
-    );
-  }
-
   Widget buildNumericField(String label, TextEditingController controller) {
     return TextFormField(
       controller: controller,
